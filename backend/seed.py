@@ -1,7 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from db_engine import sync_engine
-from models import User
+from models import User, Thread
 
 
 def seed_user_if_needed():
@@ -11,5 +11,6 @@ def seed_user_if_needed():
                 print("User already exists, skipping seeding")
                 return
             print("Seeding user")
-            session.add(User(name="Alice"))
+            session.add(User(name="Tim"))
+            session.add(Thread(name="Test Thread", owner_id="1"))
             session.commit()
